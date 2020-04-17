@@ -10,6 +10,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'enumerize'
 gem 'jbuilder', '~> 2.5'
+gem 'ledgerizer', github: 'platanus/ledgerizer', ref: 'bab9f418e26477fe3239222a73c749ae7fcb500a'
 gem 'pg'
 gem 'power-types'
 gem 'puma', '~> 3.11'
@@ -25,6 +26,7 @@ group :development do
   gem 'annotate'
   gem 'listen'
   gem 'spring'
+  gem 'table_print'
 end
 
 group :test do
