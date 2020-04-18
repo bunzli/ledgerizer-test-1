@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/platanus/ledgerizer.git
-  revision: bab9f418e26477fe3239222a73c749ae7fcb500a
-  ref: bab9f418e26477fe3239222a73c749ae7fcb500a
+  revision: e90a56c218c28b7759c193febfde7f8c5df81f61
+  ref: e90a56c218c28b7759c193febfde7f8c5df81f61
   specs:
     ledgerizer (0.1.0)
       enumerize

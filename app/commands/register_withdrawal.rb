@@ -2,7 +2,7 @@ class RegisterWithdrawal < PowerTypes::Command.new(:withdrawal)
   include Ledgerizer::Execution::Dsl
 
   def perform
-    execute_user_withdrawal_bananas_entry(tenant: casino, document: @withdrawal, date: @withdrawal.created_at) do
+    execute_user_withdrawal_bananas_entry(tenant: casino, document: @withdrawal, datetime: @withdrawal.created_at) do
       credit(account: :bananas_in_custody, amount: total_bananas - fee_bananas)
       credit(account: :withdrawal_fees, amount: fee_bananas)
       debit(account: :bananas_availables, accountable: @withdrawal.user, amount: total_bananas)
