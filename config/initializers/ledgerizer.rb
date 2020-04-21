@@ -21,7 +21,9 @@
 Ledgerizer.setup do |conf|
   conf.tenant(:casino, currency: :ban) do
     conf.asset :bananas_in_custody
+    conf.asset :bananas_in_table_bet
     conf.income :withdrawal_fees
+    conf.income :bet_fees
     conf.liability :bananas_availables
 
     conf.entry :user_deposit_bananas, document: :deposit do
@@ -34,5 +36,16 @@ Ledgerizer.setup do |conf|
       conf.credit account: :withdrawal_fees
       conf.debit account: :bananas_availables, accountable: :user
     end
+
+    conf.entry :bet_bananas, document: :bet do
+      conf.credit account: :bananas_in_table_bet
+      conf.debit account: :bananas_availables, accountable: :user
+    end
+
+    conf.entry :recieve_jackpot, document: :bet do
+      conf.debit account: :bananas_in_table_bet
+      conf.credit account: :bananas_availables, accountable: :user
+    end
   end
 end
+

@@ -13,6 +13,10 @@ class BetService < PowerTypes::Service.new
   end
 
   def ledgerize_all
+    Ledgerizer::Account.destroy_all
+    Ledgerizer::Entry.destroy_all
+    Ledgerizer::Line.destroy_all
+
     Deposit.all.each do |deposit|
       RegisterDeposit.for(deposit: deposit)
       sleep(0.01)
@@ -20,6 +24,11 @@ class BetService < PowerTypes::Service.new
 
     Withdrawal.all.each do |withdrawal|
       RegisterWithdrawal.for(withdrawal: withdrawal)
+      sleep(0.01)
+    end
+
+    Bet.all.each do |bet|
+      RegisterBet.for(bet: bet)
       sleep(0.01)
     end
   end
@@ -35,6 +44,7 @@ class BetService < PowerTypes::Service.new
     Deposit.destroy_all
     Withdrawal.destroy_all
     User.destroy_all
+    Bet.destroy_all
   end
 
   def create_casino
